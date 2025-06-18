@@ -480,7 +480,7 @@ export const generateInspectionDocument = async (data: InspectionData) => {
     ],
   });
 
-  const blob = await Packer.toBlob(doc);
+  const buffer = await Packer.toBuffer(doc);
   const fileName = `RIPP_${data.obra.replace(/\s+/g, '_')}_${data.data}.docx`;
-  saveAs(blob, fileName);
+  saveAs(new Blob([buffer]), fileName);
 };
